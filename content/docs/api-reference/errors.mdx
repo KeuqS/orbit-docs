@@ -30,7 +30,7 @@ Invalid input on <field>: <reason>
 | `merchant_id`, `plan_id`, `subscription_id` | Must be a UUID | `<field> must be a valid UUID` |
 | `id` (path) | Must be a UUID | `id parameter must be a valid UUID` |
 | `name` | Must not be empty or only spaces | `name cannot be empty` |
-| `usdc_amount` | Must be a number greater than 0 | `usdc_amount must be greater than 0` |
+| `usdc_amount` | Must be a positive integer in raw token units | `usdc_amount must be greater than 0`; `usdc_amount must be an integer in raw token units` |
 | `interval_seconds` | Must be a whole number greater than 0 | `interval_seconds must be a positive integer` |
 | `customer_wallet_address` | Must be a Stellar public key (`G...`) | `must be a valid Stellar Ed25519 public address` |
 | `merchant_secret` | Must not be empty | `merchant_secret is required` |
@@ -41,7 +41,7 @@ A field that is missing or has the wrong type gets a generic reason instead:
 { "error": "Invalid input on name: Invalid input: expected string, received undefined" }
 ```
 
-`usdc_amount` and `interval_seconds` also accept numeric strings such as `"2592000"`. A value that is not a number returns `expected number, received NaN`, and a fractional `interval_seconds` returns `expected int, received number`.
+`usdc_amount` and `interval_seconds` also accept numeric strings such as `"2592000"`. A fractional `usdc_amount` returns `usdc_amount must be an integer in raw token units`; a fractional `interval_seconds` returns `expected int, received number`.
 
 `/trigger-pull` has one more `400` that does not use this format. It is returned when `merchant_secret` is not a valid Stellar secret key:
 
