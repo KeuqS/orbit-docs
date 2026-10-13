@@ -15,8 +15,8 @@ description: "POST /plans creates a recurring plan owned by a merchant."
   Shown at checkout, for example `Pro Monthly`. Cannot be empty or only spaces.
 </ParamField>
 
-<ParamField body="usdc_amount" type="number" required>
-  Raw token units (7 decimals). `290000000` = 29 USDC. Must be greater than 0.
+<ParamField body="usdc_amount" type="integer" required>
+  Raw token units (7 decimals). `290000000` = 29 USDC. Must be a positive integer.
 </ParamField>
 
 <ParamField body="interval_seconds" type="integer" required>
