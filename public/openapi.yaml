@@ -36,7 +36,7 @@ paths:
                   description: Cannot be empty or only spaces.
                   example: Pro Monthly
                 usdc_amount:
-                  type: number
+                  type: integer
                   exclusiveMinimum: 0
                   description: Raw token units (7 decimals). 290000000 = 29 USDC.
                   example: 290000000
@@ -303,7 +303,7 @@ components:
         name:
           type: string
         usdc_amount:
-          type: number
+          type: integer
         interval_seconds:
           type: integer
         created_at:
